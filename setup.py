@@ -57,11 +57,14 @@ setup(
     author_email='eliang.cs@gmail.com',
     license='MIT',
     packages=['twbanker'],
-    scripts=['bin/twbanker'],
     install_requires=install_requires,
     extras_require={
         'test': test_requires,
     },
+    entry_points="""
+        [console_scripts]
+        twbanker=twbanker.cli:main
+    """,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Environment :: Console',
