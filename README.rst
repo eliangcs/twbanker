@@ -1,14 +1,14 @@
-TW Banker
-=========
+TW Banker (台灣銀行家)
+=====================
 
 Show you the money in your Taiwan banks with a simple command::
 
     $ twbanker ctbc
-    ID card number: ****
-    Username: ****
-    Password: ****
-    TWD     99999.00     0000001234556789
-    USD      9999.00     0000001234556789
+    ID card number: ***
+    Username: ***
+    Password: ***
+    TWD     999999.00     000000123456789
+    USD      99999.00     000000987654321
 
 Current supported banks
 
@@ -43,9 +43,15 @@ Usage
       post       Show you money in Chunghwa Post
 
 
-Disclaimer
-----------
+How It Works & Disclaimer
+-------------------------
 
-I use this tool personally and I will do my best to keep it secured. However, I
-will not account for any lost caused by using this tool. Please use at your own
-risk.
+TW Banker is a simple web crawler that logs in your bank's web site and parses
+out your bank balances. It asks for your login crendentials every time you
+execute the command. It does not store any of your login crendentials locally
+nor remotely, so using this tool should be pretty safe.
+
+I use this tool personally and I will do my best to make it safe to use.
+However, I do not guarantee that the tool is 100% safe. I (the author) and any
+future contributors of TW Banker will not account for any lost caused by using
+this tool. Please use at your own risk.
