@@ -20,8 +20,9 @@ Current supported banks
 
 Installation
 ------------
+::
 
-(sudo) pip install twbanker
+    (sudo) pip install twbanker
 
 
 Usage
