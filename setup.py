@@ -40,6 +40,7 @@ def read_description(filename):
 install_requires = [
     'click>=3.3,<3.4',
     'lxml>=3.4.0,<3.5.0',
+    'pycrypto>=2.6.1,<2.7.0',
     'requests>=2.5.0,<2.6.0',
 ]
 
