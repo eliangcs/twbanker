@@ -43,14 +43,9 @@ install_requires = [
     'requests>=2.5.0,<2.6.0',
 ]
 
-test_requires = [
-    'pytest',
-    'pytest-cov',
-]
-
 dev_requires = [
     'ipython',
-] + test_requires
+]
 
 setup(
     name='twbanker',
@@ -64,8 +59,7 @@ setup(
     packages=['twbanker', 'twbanker.banks'],
     install_requires=install_requires,
     extras_require={
-        'dev': dev_requires,
-        'test': test_requires
+        'dev': dev_requires
     },
     entry_points="""
         [console_scripts]
