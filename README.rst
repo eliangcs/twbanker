@@ -37,7 +37,10 @@ Usage
       --help  Show this message and exit.
 
     Commands:
-      ctbc  Show you money in CTBC Bank
+      chartered  Show you money in Standard Chartered
+      ctbc       Show you money in CTBC Bank
+      first      Show you money in First Bank
+      post       Show you money in Chunghwa Post
 
 
 Disclaimer
