@@ -39,7 +39,8 @@ def read_description(filename):
 
 install_requires = [
     'click>=3.3,<3.4',
-    'requests>=2.5.0,<2.6.0'
+    'lxml>=3.4.0,<3.5.0',
+    'requests>=2.5.0,<2.6.0',
 ]
 
 test_requires = [
@@ -47,19 +48,24 @@ test_requires = [
     'pytest-cov',
 ]
 
+dev_requires = [
+    'ipython',
+] + test_requires
+
 setup(
     name='twbanker',
     version=find_version('twbanker', '__init__.py'),
     url='https://github.com/eliangcs/twbanker',
-    description='Show you the money in your bank',
+    description='Show you the money in your Taiwan banks',
     long_description=read_description('README.rst'),
     author='Chang-Hung Liang',
     author_email='eliang.cs@gmail.com',
     license='MIT',
-    packages=['twbanker'],
+    packages=['twbanker', 'twbanker.banks'],
     install_requires=install_requires,
     extras_require={
-        'test': test_requires,
+        'dev': dev_requires,
+        'test': test_requires
     },
     entry_points="""
         [console_scripts]
