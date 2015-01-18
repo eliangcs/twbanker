@@ -14,7 +14,7 @@ balance_url = 'https://ipost.post.gov.tw/web/CSController?cmd=CUR1002_1'
 logout_url = 'https://ipost.post.gov.tw/web/CSController?cmd=POS0000_5'
 
 credentials = (
-    ('Account number', 'USERID'),
+    ('Account number (14 digits)', 'USERID'),
     ('Username', 'USERCODE'),
     ('Password', 'PWD'),
 )
