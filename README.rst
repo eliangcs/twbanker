@@ -1,5 +1,5 @@
 TW Banker (台灣銀行家)
-=====================
+========================
 
 Show you the money in your Taiwan banks with a simple command::
 
