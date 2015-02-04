@@ -7,8 +7,10 @@ Show you the money in your Taiwan banks with a simple command::
     ID card number: ***
     Username: ***
     Password: ***
-    TWD     999999.00     000000123456789
-    USD      99999.00     000000987654321
+    TWD     1000.00     000000123456789
+    USD      100.00     000000987654321
+    -----------------------------------
+    TWD     4000.00               TOTAL
 
 Current supported banks
 

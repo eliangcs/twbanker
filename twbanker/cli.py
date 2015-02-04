@@ -13,6 +13,12 @@ BANKS_DIR = os.path.join(os.path.dirname(__file__), 'banks')
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 
+def get_exchange_rate(currency):
+    r = requests.get('http://finance.yahoo.com/d/quotes.csv?'
+                     'e=.csv&f=sl1d1t1&s=%sTWD=X' % currency)
+    return float(r.content.split(',')[1])
+
+
 def generate_bank_command(bank):
     @click.command(help='Show you money in %s' % bank.name)
     def cli():
@@ -42,11 +48,23 @@ def generate_bank_command(bank):
         try:
             r = s.get(bank.balance_url)
             tree = html.fromstring(r.text)
+            total = 0
             for account, currency, amount in bank.parse_balance(tree, s):
                 if isinstance(amount, basestring):
                     amount = locale.atof(amount)
                 line = '%3s %13.2f %20s' % (currency, amount, account)
                 click.echo(line)
+
+                if currency == 'TWD':
+                    rate = 1.0
+                else:
+                    rate = get_exchange_rate(currency)
+
+                total += rate * amount
+
+            click.echo('--------------------------------------')
+            click.echo('TWD %13.2f %20s' % (total, 'TOTAL'))
+
         finally:
             logout_method = getattr(bank, 'logout_method', 'get')
             logout = getattr(s, logout_method)
