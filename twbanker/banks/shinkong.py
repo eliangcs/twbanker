@@ -87,7 +87,7 @@ def parse_balance(html, session):
 
 
 def logout_data(html, session):
-    data = {
+    return {
         'ctl00_ToolkitScriptManager1_HiddenField': '',
         '__EVENTTARGET': '',
         '__EVENTARGUMENT': '',
@@ -99,4 +99,3 @@ def logout_data(html, session):
         'ctl00$LoginStatus1$ctl01.x': '19',
         'ctl00$LoginStatus1$ctl01.y': '8'
     }
-    session.post(logout_url, data=data)
