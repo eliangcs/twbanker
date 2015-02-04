@@ -15,6 +15,7 @@ Current supported banks
 * Chunghwa Post (中華郵政)
 * CTBC Bank (中國信託)
 * First Bank (第一銀行)
+* Shin Kong Bank (新光銀行)
 * Standard Chartered (渣打銀行)
 
 
@@ -42,6 +43,7 @@ Usage
       ctbc       Show you money in CTBC Bank
       first      Show you money in First Bank
       post       Show you money in Chunghwa Post
+      shinkong   Show you money in Shin Kong Bank
 
 
 How It Works & Disclaimer
