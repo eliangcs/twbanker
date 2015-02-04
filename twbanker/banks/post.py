@@ -20,7 +20,7 @@ credentials = (
 )
 
 
-def get_form_data(html, credentials):
+def get_form_data(html, credentials, session):
     form_data = {
         'cmd': 'POS0000_2',
         'chgUserIdFalg': '0',
@@ -56,7 +56,7 @@ def get_form_data(html, credentials):
     return form_data
 
 
-def parse_balance(html):
+def parse_balance(html, session):
     accounts = html.xpath(
         '//table[@class="Context_tb"]/tr[1]/td[2]/script/text()')
     amounts = html.xpath(

@@ -16,9 +16,11 @@ locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 def generate_bank_command(bank):
     @click.command(help='Show you money in %s' % bank.name)
     def cli():
+        user_agent = getattr(bank, 'user_agent', 'Mozilla/5.0')
+
         s = requests.Session()
         s.headers.update({
-            'User-Agent': 'Mozilla/5.0'
+            'User-Agent': user_agent
         })
         r = s.get(bank.form_url)
         if r.status_code != 200:
@@ -30,7 +32,7 @@ def generate_bank_command(bank):
             credentials[codename] = getpass('%s: ' % name)
 
         tree = html.fromstring(r.text)
-        form_data = bank.get_form_data(tree, credentials)
+        form_data = bank.get_form_data(tree, credentials, s)
 
         r = s.post(bank.login_url, data=form_data)
         if r.status_code != 200:
@@ -40,7 +42,7 @@ def generate_bank_command(bank):
         try:
             r = s.get(bank.balance_url)
             tree = html.fromstring(r.text)
-            for account, currency, amount in bank.parse_balance(tree):
+            for account, currency, amount in bank.parse_balance(tree, s):
                 if isinstance(amount, basestring):
                     amount = locale.atof(amount)
                 line = '%3s %13.2f %20s' % (currency, amount, account)
@@ -48,7 +50,12 @@ def generate_bank_command(bank):
         finally:
             logout_method = getattr(bank, 'logout_method', 'get')
             logout = getattr(s, logout_method)
-            r = logout(bank.logout_url)
+
+            logout_data = getattr(bank, 'logout_data', None)
+            if callable(logout_data):
+                logout_data = logout_data(tree, s)
+
+            r = logout(bank.logout_url, data=logout_data)
             if r.status_code >= 400:
                 click.echo('Logout error (%d)' % r.status_code)
 

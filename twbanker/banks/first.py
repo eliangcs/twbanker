@@ -21,7 +21,7 @@ credentials = (
 )
 
 
-def get_form_data(html, credentials):
+def get_form_data(html, credentials, session):
     form_data = {
         'loginCustIdRptSeq': '0',
         'countInt': '3',
@@ -44,7 +44,7 @@ def get_form_data(html, credentials):
     return form_data
 
 
-def parse_balance(html):
+def parse_balance(html, session):
     amounts = html.xpath('//tr[count(td)=10][position()>1]/td[6]/text()')
     accounts = html.xpath('//tr[count(td)=10][position()>1]/td[3]/a/text()')
 

@@ -19,7 +19,7 @@ credentials = (
 )
 
 
-def get_form_data(html, credentials):
+def get_form_data(html, credentials, session):
     token = html.xpath(
         '//form[@name="loginform"]/input[@name="token"]/@value')[0]
     form_data = {
@@ -35,7 +35,7 @@ def get_form_data(html, credentials):
     return form_data
 
 
-def parse_balance(html):
+def parse_balance(html, session):
     twd_accounts = html.xpath(
         '//tbody[contains(@id, ":twddata")]//select/option[1]/@value')
     twd_balances = html.xpath(

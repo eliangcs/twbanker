@@ -19,7 +19,7 @@ credentials = (
 )
 
 
-def get_form_data(html, credentials):
+def get_form_data(html, credentials, session):
     form_data = {
         'locale': 'en_US'
     }
@@ -27,7 +27,7 @@ def get_form_data(html, credentials):
     return form_data
 
 
-def parse_balance(html):
+def parse_balance(html, session):
     accounts = html.xpath(
         '//div[@id="right_con"]/table/tr[position()>2]/td[last()-2]/a/text()')
     currencies = html.xpath(
