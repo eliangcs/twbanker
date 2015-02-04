@@ -1,6 +1,9 @@
 TW Banker (台灣銀行家)
 ========================
 
+.. image:: https://badge.fury.io/py/twbanker.svg
+    :target: http://badge.fury.io/py/twbanker
+
 Show you the money in your Taiwan banks with a simple command::
 
     $ twbanker ctbc
